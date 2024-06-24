@@ -1,8 +1,8 @@
-package com.example.zerowaste.screen
+package com.example.zerowasteproject.screen
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -10,10 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarToday
-import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,10 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.zerowaste.R
-import java.util.Calendar
-
-data class WasteType(val name: String, val icon: Int)
+import com.example.zerowasteproject.R
+import java.util.*
 
 @Composable
 fun pickup(navController: NavController? = null) {
@@ -39,137 +34,123 @@ fun pickup(navController: NavController? = null) {
             .verticalScroll(scrollState)
     ) {
         Text(
-            text = "Pickup",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = "Informasi Sampah",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black
-        )
-        Spacer(modifier = Modifier.height(7.dp))
-        Text(
-            text = "Silakan pilih jenis sampah dan masukkan perkiraan berat sampah Anda. Tidak ada batasan berat minimum untuk pengambilan.",
-            fontSize = 14.sp,
-            color = Color.Black
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-
-        val wasteTypes = listOf(
-            WasteType("Organik", R.drawable.organik),
-            WasteType("Anorganik", R.drawable.anorganik),
-            WasteType("Campuran", R.drawable.campuran)
-        )
-
-        wasteTypes.forEach { wasteType ->
-            Spacer(modifier = Modifier.height(3.dp))
-            WasteTypeButton(text = wasteType.name, iconRes = wasteType.icon)
-        }
-
-        Spacer(modifier = Modifier.height(15.dp))
-        Text(
             text = "Informasi Penjemputan",
-            fontSize = 18.sp,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Black
-        )
-        Spacer(modifier = Modifier.height(5.dp))
-
-        var phoneNumber by remember { mutableStateOf("") }
-        var address by remember { mutableStateOf("") }
-        var pickupDate by remember { mutableStateOf("") }
-        var pickupTime by remember { mutableStateOf("") }
-
-        var showDatePickerDialog by remember { mutableStateOf(false) }
-        var showTimePickerDialog by remember { mutableStateOf(false) }
-
-        PickupInfoInputField(
-            value = phoneNumber,
-            onValueChange = { phoneNumber = it },
-            label = "Nomor Telepon",
-            borderColor = Color(0xFF388E3C)
-        )
-        PickupInfoInputField(
-            value = address,
-            onValueChange = { address = it },
-            label = "Alamat",
-            borderColor = Color(0xFF388E3C)
-        )
-        PickupInfoInputField(
-            value = pickupDate,
-            onValueChange = { pickupDate = it },
-            label = "Tanggal Penjemputan",
-            hasIcon = true,
-            icon = R.drawable.calendar,
-            onClick = { showDatePickerDialog = true },
-            borderColor = Color(0xFF388E3C)
-        )
-        PickupInfoInputField(
-            value = pickupTime,
-            onValueChange = { pickupTime = it },
-            label = "Waktu Penjemputan",
-            hasIcon = true,
-            icon = R.drawable.drop,
-            onClick = { showTimePickerDialog = true },
-            borderColor = Color(0xFF4CAF50) // Warna border hijau
-        )
-
-        if (showDatePickerDialog) {
-            showDatePicker { date ->
-                pickupDate = date
-                showDatePickerDialog = false
-            }
-        }
-
-        if (showTimePickerDialog) {
-            showTimePicker { time ->
-                pickupTime = time
-                showTimePickerDialog = false
-            }
-        }
-    }
-}
-
-@Composable
-fun WasteTypeButton(text: String, iconRes: Int) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 5.dp)
-            .border(1.dp, Color(0xFF388E3C), shape = RoundedCornerShape(8.dp))
-            .background(Color(0x124CAF50), shape = RoundedCornerShape(8.dp))
-            .padding(10.dp)
-            .clickable { }
-    ) {
-        Image(
-            painter = painterResource(id = iconRes),
-            contentDescription = text,
-            modifier = Modifier.size(24.dp)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(
-            text = text,
-            fontSize = 18.sp,
             color = Color.Black,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.weight(1f)
-        )
-        Button(
-            onClick = { /* Handle click */ },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color(0xFF388E3C),
-                contentColor = Color.White
-            ),
             modifier = Modifier
-                .defaultMinSize(minHeight = 36.dp)
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color.Gray, RoundedCornerShape(10.dp))
+                .padding(16.dp)
         ) {
-            Text(text = "Pilih")
+            var phoneNumber by remember { mutableStateOf("") }
+            var address by remember { mutableStateOf("") }
+            var pickupDate by remember { mutableStateOf("") }
+            var pickupTime by remember { mutableStateOf("") }
+            var nama by remember { mutableStateOf("") }
+            var kategori by remember { mutableStateOf("") }
+            var berat by remember { mutableStateOf("") }
+            var harga by remember { mutableStateOf("") }
+
+            var showDatePickerDialog by remember { mutableStateOf(false) }
+            var showTimePickerDialog by remember { mutableStateOf(false) }
+
+            PickupInfoInputField(
+                value = nama,
+                onValueChange = { nama = it },
+                label = "Nama Pengguna",
+                borderColor = Color(0xFF388E3C)
+            )
+            PickupInfoInputField(
+                value = kategori,
+                onValueChange = { kategori = it },
+                label = "Kategori Sampah",
+                borderColor = Color(0xFF388E3C)
+            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                PickupInfoInputField(
+                    value = berat,
+                    onValueChange = { berat = it },
+                    label = "Berat (kg)",
+                    modifier = Modifier.weight(1f),
+                    borderColor = Color(0xFF388E3C)
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                PickupInfoInputField(
+                    value = harga,
+                    onValueChange = { harga = it },
+                    label = "Harga (per kg)",
+                    modifier = Modifier.weight(1f),
+                    borderColor = Color(0xFF388E3C)
+                )
+            }
+            PickupInfoInputField(
+                value = phoneNumber,
+                onValueChange = { phoneNumber = it },
+                label = "No. HP",
+                borderColor = Color(0xFF388E3C)
+            )
+            PickupInfoInputField(
+                value = address,
+                onValueChange = { address = it },
+                label = "Alamat",
+                borderColor = Color(0xFF388E3C)
+            )
+            PickupInfoInputField(
+                value = pickupDate,
+                onValueChange = { pickupDate = it },
+                label = "Tanggal Penjemputan",
+                hasIcon = true,
+                icon = R.drawable.calendar,
+                onClick = { showDatePickerDialog = true },
+                borderColor = Color(0xFF388E3C)
+            )
+            PickupInfoInputField(
+                value = pickupTime,
+                onValueChange = { pickupTime = it },
+                label = "Waktu Penjemputan",
+                hasIcon = true,
+                icon = R.drawable.drop,
+                onClick = { showTimePickerDialog = true },
+                borderColor = Color(0xFF388E3C)
+            )
+            if (showDatePickerDialog) {
+                showDatePicker { date ->
+                    pickupDate = date
+                    showDatePickerDialog = false
+                }
+            }
+            if (showTimePickerDialog) {
+                showTimePicker { time ->
+                    pickupTime = time
+                    showTimePickerDialog = false
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(
+                onClick = {
+                    // navController?.navigate("")
+                    Log.i("Pickup", "Nama: $nama, Kategori: $kategori, Berat: $berat, Harga: $harga, Telepon: $phoneNumber, Alamat: $address, Tanggal: $pickupDate, Waktu: $pickupTime")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF388E3C)),
+                shape = RoundedCornerShape(5.dp)
+            ) {
+                Text(
+                    text = "Jemput Sampah",
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                )
+            }
         }
     }
 }
@@ -179,19 +160,20 @@ fun PickupInfoInputField(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
+    modifier: Modifier = Modifier,
     hasIcon: Boolean = false,
     icon: Int = 0,
     onClick: (() -> Unit)? = null,
-    borderColor: Color = Color(0xFF388E3C) // Warna hijau sebagai default
+    borderColor: Color = Color(0xFF388E3C)
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 5.dp)
-            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier), // Hanya tambahkan clickable jika onClick disediakan
+            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier),
         singleLine = true,
         trailingIcon = {
             if (hasIcon) {
@@ -205,13 +187,12 @@ fun PickupInfoInputField(
                 )
             }
         },
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = borderColor,
             unfocusedBorderColor = borderColor
         )
     )
 }
-
 
 @Composable
 fun showDatePicker(onDateSelected: (String) -> Unit) {

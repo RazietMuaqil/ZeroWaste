@@ -1,13 +1,9 @@
-package com.example.zerowaste.screen
+package com.example.zerowasteproject.screen
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -19,9 +15,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.example.zerowaste.R
+import com.example.app.R
 
 @Composable
 fun profile(navController: NavController) {
@@ -40,29 +35,29 @@ fun profile(navController: NavController) {
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         UserProfile()
         Spacer(modifier = Modifier.height(16.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.info),
             text = "Panduan Aplikasi",
         )
-        Spacer(modifier = Modifier.height(2.dp)) // Add spacing between items
+        Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.syarat),
             text = "Syarat dan Ketentuan"
         )
-        Spacer(modifier = Modifier.height(2.dp)) // Add spacing between items
+        Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.langganan),
             text = "Langganan"
         )
-        Spacer(modifier = Modifier.height(2.dp)) // Add spacing between items
+        Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.bantuan),
             text = "Bantuan"
         )
-        Spacer(modifier = Modifier.height(2.dp)) // Add spacing between items
+        Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.keluar),
             text = "Keluar"
@@ -84,16 +79,17 @@ fun UserProfile() {
         ) {
             Box(
                 modifier = Modifier
-                    .padding(start = 16.dp) // Add padding to move the icon to the right
-                    .size(70.dp), // Increased the size of the Box to accommodate the larger icon
+                    .padding(start = 16.dp)
+                    .size(70.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.account),
                     contentDescription = null,
                     tint = Color(0xFFF5F5F5),
-                    modifier = Modifier.size(70.dp) // Increased the size of the icon
+                    modifier = Modifier.size(120.dp)
                 )
+
             }
             Spacer(modifier = Modifier.width(16.dp))
             Column(
@@ -137,10 +133,10 @@ fun NavigationItem(icon: Painter, text: String) {
             Icon(
                 painter = icon,
                 contentDescription = null,
-                tint = Color(0xFF000000),
+                tint = Color(0xD8222222),
                 modifier = Modifier.size(24.dp)
             )
-            Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.width(3.dp))
             Text(
                 text = text,
                 fontSize = 16.sp,

@@ -1,4 +1,4 @@
-package com.example.zerowaste.screen
+package com.example.zerowasteproject.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -83,7 +83,7 @@ fun notification(navController: NavController) {
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         LazyColumn {
             items(notifications) { notification ->
                 NotificationCard(notification) {
