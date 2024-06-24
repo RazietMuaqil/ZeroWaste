@@ -39,8 +39,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.zerowaste.R
-import com.example.zerowaste.navigation.Screens
+import com.example.app.R
+import com.example.zerowasteproject.navigation.Screens
 
 @Composable
 fun login(navController: NavController) {
@@ -66,7 +66,7 @@ fun login(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Row(verticalAlignment = Alignment.Top) {
-            Column(modifier = Modifier.fillMaxWidth()) { // Tambahkan modifier ini
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = "Selamat Datang Kembali",
                     fontSize = 15.sp,
@@ -91,10 +91,10 @@ fun login(navController: NavController) {
             label = {
                 Text(text = "Email")
             },
-            modifier = Modifier.fillMaxWidth() // Make the text field take full width
+            modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         OutlinedTextField(
             value = password,
@@ -129,11 +129,18 @@ fun login(navController: NavController) {
                 navController.navigate("home")
                 Log.i("Credential", "Email: $email, Password: $password")
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(52.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFF388E3C)),
-            shape = RoundedCornerShape(5.dp) // Menggunakan RoundedCornerShape dengan radius 5.dp
+            shape = RoundedCornerShape(5.dp)
         ) {
-            Text(text = "Login", color = Color.White)
+            Text(
+                text = "Login",
+                color = Color.White,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
         }
 
 
@@ -171,7 +178,7 @@ fun login(navController: NavController) {
                 painter = painterResource(id = R.drawable.twit),
                 contentDescription = "Twitter",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Twitter Clickable
                     }
@@ -181,7 +188,7 @@ fun login(navController: NavController) {
                 painter = painterResource(id = R.drawable.google),
                 contentDescription = "Google",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Google Clickable
                     }
@@ -191,7 +198,7 @@ fun login(navController: NavController) {
                 painter = painterResource(id = R.drawable.fb),
                 contentDescription = "Facebook",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Facebook Clickable
                     }
