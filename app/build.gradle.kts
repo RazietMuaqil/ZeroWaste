@@ -38,7 +38,11 @@ android {
     }
     buildFeatures {
         compose = true
+        mlModelBinding = true
     }
+
+
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
@@ -47,6 +51,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -63,6 +68,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.compose.material:material:1.0.5")
     implementation("androidx.compose.material:material-icons-extended:1.0.5")
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -70,5 +76,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("org.tensorflow:tensorflow-lite:2.6.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.6.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.1.0")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
 
 }

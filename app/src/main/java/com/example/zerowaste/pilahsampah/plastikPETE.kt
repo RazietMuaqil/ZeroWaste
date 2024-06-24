@@ -1,8 +1,5 @@
-package com.example.zerowasteproject.pilahsampah
+package com.example.zerowaste.pilahsampah
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -17,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.app.R
+import com.example.zerowaste.R
 
 @Composable
 fun plastikPETE(navController: NavHostController) {

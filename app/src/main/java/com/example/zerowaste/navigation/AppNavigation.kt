@@ -1,16 +1,12 @@
-package com.example.zerowasteproject.navigation
+package com.example.zerowaste.navigation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,27 +25,26 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.zerowaste.navigation.listOfNavItems
-import com.example.zerowasteproject.edukasi.barangbekas
-import com.example.zerowasteproject.edukasi.daurulang
-import com.example.zerowasteproject.edukasi.edukasi
-import com.example.zerowasteproject.edukasi.edukasisampah
-import com.example.zerowasteproject.edukasi.recycle
-import com.example.zerowasteproject.edukasi.reduce
-import com.example.zerowasteproject.edukasi.reuce
-import com.example.zerowasteproject.login.login
-import com.example.zerowasteproject.pilahsampah.kertas
-import com.example.zerowasteproject.pilahsampah.pilahsampah
-import com.example.zerowasteproject.pilahsampah.plastik
-import com.example.zerowasteproject.pilahsampah.plastikPETE
-import com.example.zerowasteproject.pindai.pindai
-import com.example.zerowasteproject.poin.poin
-import com.example.zerowasteproject.screen.home
-import com.example.zerowasteproject.screen.notification
-import com.example.zerowasteproject.screen.pickup
-import com.example.zerowasteproject.screen.profile
-import com.example.zerowasteproject.screen.splash
-import com.example.zerowasteproject.signup.signup
+import com.example.zerowaste.edukasi.barangbekas
+import com.example.zerowaste.edukasi.daurulang
+import com.example.zerowaste.edukasi.edukasi
+import com.example.zerowaste.edukasi.edukasisampah
+import com.example.zerowaste.edukasi.recycle
+import com.example.zerowaste.edukasi.reduce
+import com.example.zerowaste.edukasi.reuce
+import com.example.zerowaste.login.login
+import com.example.zerowaste.pilahsampah.kertas
+import com.example.zerowaste.pilahsampah.pilahsampah
+import com.example.zerowaste.pilahsampah.plastik
+import com.example.zerowaste.pilahsampah.plastikPETE
+import com.example.zerowaste.pindai.pindai
+import com.example.zerowaste.poin.poin
+import com.example.zerowaste.screen.home
+import com.example.zerowaste.screen.notification
+import com.example.zerowaste.screen.pickup
+import com.example.zerowaste.screen.profile
+import com.example.zerowaste.screen.splash
+import com.example.zerowaste.signup.signup
 
 
 @Composable

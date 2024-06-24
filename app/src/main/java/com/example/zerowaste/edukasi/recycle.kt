@@ -1,8 +1,5 @@
-package com.example.zerowasteproject.edukasi
+package com.example.zerowaste.edukasi
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,9 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import com.example.app.R
-import com.example.zerowasteproject.poin.Item
+import com.example.zerowaste.R
 
 @Composable
 fun recycle(navController: NavController) {

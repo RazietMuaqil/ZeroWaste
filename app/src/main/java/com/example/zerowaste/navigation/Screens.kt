@@ -7,4 +7,18 @@ enum class Screens {
     Profile,
     Login,
     Signup,
+    Pilahsampah,
+    Plastik,
+    Kertas,
+    PlastikPETE,
+    Poin,
+    Edukasi,
+    Reduce,
+    Reuce,
+    Recycle,
+    Edukasisampah,
+    Barangbekas,
+    Daurulang,
+    Splash,
+    Pindai
 }

@@ -1,8 +1,5 @@
-package com.example.zerowasteproject.pilahsampah
+package com.example.zerowaste.pilahsampah
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,13 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.app.R
-import com.example.zerowasteproject.navigation.Screens
+import com.example.zerowaste.R
+import com.example.zerowaste.navigation.Screens
 
 @Composable
 fun pilahsampah(navController: NavHostController) {

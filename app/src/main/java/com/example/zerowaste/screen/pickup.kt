@@ -1,9 +1,8 @@
-package com.example.zerowasteproject.screen
+package com.example.zerowaste.screen
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.zerowasteproject.R
+import com.example.zerowaste.R
 import java.util.*
 
 @Composable

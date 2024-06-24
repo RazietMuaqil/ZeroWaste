@@ -1,19 +1,14 @@
 package com.example.zerowaste.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.graphics.vector.ImageVector
-
 import androidx.annotation.DrawableRes
 import com.example.zerowaste.R
 
 data class NavItem(
     val label: String,
-    @DrawableRes val icon: Int,
+    @DrawableRes
+    val icon: Int,
     val route: String
 )
-
 
 val listOfNavItems = listOf(
     NavItem(
@@ -32,7 +27,7 @@ val listOfNavItems = listOf(
         route = Screens.Notification.name
     ),
     NavItem(
-        label = "Profile",
+        label = "Account",
         icon = R.drawable.profile,
         route = Screens.Profile.name
     )
