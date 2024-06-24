@@ -106,7 +106,7 @@ fun pindai(navController: NavController) {
                 Image(bitmap = it.asImageBitmap(), contentDescription = null, modifier = Modifier.size(220.dp))
             }
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Klasifikasi : $resultText", style = TextStyle(fontSize = 20.sp))
+            Text(text = "Klasifikasi Sampah: $resultText", style = TextStyle(fontSize = 20.sp))
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
