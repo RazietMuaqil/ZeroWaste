@@ -103,7 +103,7 @@ fun pindai(navController: NavController) {
                 .weight(1f)
         ) {
             imageBitmap?.let {
-                Image(bitmap = it.asImageBitmap(), contentDescription = null, modifier = Modifier.size(200.dp))
+                Image(bitmap = it.asImageBitmap(), contentDescription = null, modifier = Modifier.size(220.dp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Klasifikasi : $resultText", style = TextStyle(fontSize = 20.sp))
