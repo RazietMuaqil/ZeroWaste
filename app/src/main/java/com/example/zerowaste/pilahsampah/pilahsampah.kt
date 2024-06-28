@@ -1,8 +1,5 @@
-package com.example.zerowasteproject.pilahsampah
+package com.example.zerowaste.pilahsampah
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,13 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.app.R
-import com.example.zerowasteproject.navigation.Screens
+import com.example.zerowaste.R
+import com.example.zerowaste.navigation.Screens
 
 @Composable
 fun pilahsampah(navController: NavHostController) {
@@ -41,13 +34,13 @@ fun pilahsampah(navController: NavHostController) {
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Spacer(modifier = Modifier.width(48.dp))  // Spacer untuk mengkompensasi lebar ikon navigasi
+                            Spacer(modifier = Modifier.width(48.dp))
                             Text(
                                 text = "Pilah Sampah",
                                 fontSize = 20.sp,
                                 modifier = Modifier.weight(1f)
                             )
-                            Spacer(modifier = Modifier.width(48.dp))  // Spacer untuk menyeimbangkan tampilan
+                            Spacer(modifier = Modifier.width(48.dp))
                         }
                     }
                 },
@@ -98,7 +91,7 @@ fun WasteSortingGrid(modifier: Modifier = Modifier, navController: NavHostContro
                             onClick = {
                                 when (label) {
                                     "Plastik" -> navController.navigate(Screens.Plastik.name)
-                                    "Kertas" -> navController.navigate(Screens.Kertas.name) // Tambahkan navigasi untuk Kertas
+                                    "Kertas" -> navController.navigate(Screens.Kertas.name)
                                     // Handle other item clicks if needed
                                 }
                             }
@@ -119,7 +112,7 @@ fun WasteCategoryItem(iconRes: Int, label: String, onClick: () -> Unit) {
             .padding(8.dp)
             .size(150.dp)
             .clickable(onClick = onClick)
-            .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))  // Menambahkan border dengan ketebalan 1dp dan warna abu-abu
+            .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
     ) {
         Column(
             modifier = Modifier

@@ -1,12 +1,10 @@
 package com.example.zerowaste.signup
 
-import android.os.Bundle
 import android.util.Log
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -26,11 +24,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.zerowaste.R
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.navigation.NavController
 import com.example.zerowaste.navigation.Screens
+import com.example.zerowaste.R
 
 
 @Composable
@@ -82,7 +80,7 @@ fun signup(navController: NavController) {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(7.dp))
 
         OutlinedTextField(
             value = email,
@@ -91,7 +89,7 @@ fun signup(navController: NavController) {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(7.dp))
 
         OutlinedTextField(
             value = password,
@@ -135,13 +133,21 @@ fun signup(navController: NavController) {
 
         Button(
             onClick = {
-                navController.navigate(Screens.Login.name)
+                navController.navigate("login")
                 Log.i("Credential", "Nama: $namaLengkap, Email: $email, Password: $password")
             },
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.run { buttonColors(Color(0xFF4CAF50)) }
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(52.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFF388E3C)),
+            shape = RoundedCornerShape(5.dp)
         ) {
-            Text(text = "Sign up", color = Color.White)
+            Text(
+                text = "Sign Up",
+                color = Color.White,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -164,7 +170,7 @@ fun signup(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "atau lanjut dengan",
-            fontSize = 12.sp
+            fontSize = 13.sp
         )
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -178,7 +184,7 @@ fun signup(navController: NavController) {
                 painter = painterResource(id = R.drawable.twit),
                 contentDescription = "Twitter",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Twitter Clickable
                     }
@@ -188,7 +194,7 @@ fun signup(navController: NavController) {
                 painter = painterResource(id = R.drawable.google),
                 contentDescription = "Google",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Google Clickable
                     }
@@ -198,7 +204,7 @@ fun signup(navController: NavController) {
                 painter = painterResource(id = R.drawable.fb),
                 contentDescription = "Facebook",
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clickable {
                         // Facebook Clickable
                     }

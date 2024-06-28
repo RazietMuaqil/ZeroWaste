@@ -1,4 +1,4 @@
-package com.example.zerowasteproject.screen
+package com.example.zerowaste.screen
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.app.R
+import com.example.zerowaste.R
 
 @Composable
 fun home(navController: NavController) {

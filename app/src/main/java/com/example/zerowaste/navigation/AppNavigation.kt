@@ -1,16 +1,12 @@
-package com.example.zerowasteproject.navigation
+package com.example.zerowaste.navigation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,28 +25,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.zerowaste.navigation.listOfNavItems
-import com.example.zerowasteproject.edukasi.barangbekas
-import com.example.zerowasteproject.edukasi.daurulang
-import com.example.zerowasteproject.edukasi.edukasi
-import com.example.zerowasteproject.edukasi.edukasisampah
-import com.example.zerowasteproject.edukasi.recycle
-import com.example.zerowasteproject.edukasi.reduce
-import com.example.zerowasteproject.edukasi.reuce
-import com.example.zerowasteproject.login.login
-import com.example.zerowasteproject.pilahsampah.kertas
-import com.example.zerowasteproject.pilahsampah.pilahsampah
-import com.example.zerowasteproject.pilahsampah.plastik
-import com.example.zerowasteproject.pilahsampah.plastikPETE
-import com.example.zerowasteproject.pindai.pindai
-import com.example.zerowasteproject.poin.poin
-import com.example.zerowasteproject.screen.home
-import com.example.zerowasteproject.screen.notification
-import com.example.zerowasteproject.screen.pickup
-import com.example.zerowasteproject.screen.profile
-import com.example.zerowasteproject.screen.splash
-import com.example.zerowasteproject.signup.signup
-
+import com.example.zerowaste.edukasi.*
+import com.example.zerowaste.login.login
+import com.example.zerowaste.pilahsampah.*
+import com.example.zerowaste.pindai.hasil
+import com.example.zerowaste.pindai.pindai
+import com.example.zerowaste.poin.poin
+import com.example.zerowaste.screen.*
+import com.example.zerowaste.signup.signup
 
 @Composable
 fun AppNavigation() {
@@ -58,24 +40,31 @@ fun AppNavigation() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     val selectedItem = remember { mutableStateOf(0) }
+
     Scaffold(
         bottomBar = {
             if (
-                currentDestination?.route != Screens.Login.name &&
-                currentDestination?.route != Screens.Signup.name &&
-                currentDestination?.route != Screens.Pilahsampah.name &&
-                currentDestination?.route != Screens.Plastik.name &&
-                currentDestination?.route != Screens.Kertas.name &&
-                currentDestination?.route != Screens.PlastikPETE.name &&
-                currentDestination?.route != Screens.Poin.name &&
-                currentDestination?.route != Screens.Edukasi.name &&
-                currentDestination?.route != Screens.Reduce.name &&
-                currentDestination?.route != Screens.Reuce.name &&
-                currentDestination?.route != Screens.Recycle.name &&
-                currentDestination?.route != Screens.Edukasisampah.name &&
-                currentDestination?.route != Screens.Barangbekas.name &&
-                currentDestination?.route != Screens.Daurulang.name &&
-                currentDestination?.route != Screens.Splash.name
+                currentDestination?.route !in listOf(
+                    Screens.Login.name,
+                    Screens.Signup.name,
+                    Screens.Pilahsampah.name,
+                    Screens.Plastik.name,
+                    Screens.Kertas.name,
+                    Screens.PlastikPETE.name,
+                    Screens.Poin.name,
+                    Screens.Edukasi.name,
+                    Screens.Reduce.name,
+                    Screens.Reuce.name,
+                    Screens.Recycle.name,
+                    Screens.Edukasisampah.name,
+                    Screens.Barangbekas.name,
+                    Screens.Daurulang.name,
+                    Screens.Splash.name,
+                    Screens.Berhasil.name,
+                    Screens.Alamat.name,
+                    Screens.Simpan.name,
+                    Screens.Hasil.name
+                )
             )
                 BottomNavigation(
                     backgroundColor = Color.White,
@@ -123,8 +112,7 @@ fun AppNavigation() {
         NavHost(
             navController = navController,
             startDestination = Screens.Splash.name,
-            modifier = Modifier
-                .padding(paddingValues)
+            modifier = Modifier.padding(paddingValues)
         ) {
             composable(route = Screens.Home.name) {
                 home(navController = navController)
@@ -185,6 +173,18 @@ fun AppNavigation() {
             }
             composable(route = Screens.Pindai.name) {
                 pindai(navController = navController)
+            }
+            composable(route = Screens.Berhasil.name) {
+                berhasil(navController = navController)
+            }
+            composable(route = Screens.Alamat.name) {
+                alamat(navController = navController)
+            }
+            composable(route = Screens.Simpan.name) {
+                simpan(navController = navController)
+            }
+            composable(route = Screens.Hasil.name) {
+                hasil(navController = navController)
             }
         }
     }

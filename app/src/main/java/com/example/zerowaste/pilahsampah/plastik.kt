@@ -1,4 +1,4 @@
-package com.example.zerowasteproject.pilahsampah
+package com.example.zerowaste.pilahsampah
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.app.R
+import com.example.zerowaste.R
 
 
 @Composable
@@ -30,12 +30,12 @@ fun plastik(navController: NavHostController) {
                 title = {
                     Box(
                         modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.CenterStart // Posisi teks di awal dengan padding tambahan
+                        contentAlignment = Alignment.CenterStart
                     ) {
                         Text(
                             text = "Pilah Sampah Plastik",
                             fontSize = 20.sp,
-                            modifier = Modifier.padding(start = 24.dp), // Tambahkan padding di sini
+                            modifier = Modifier.padding(start = 24.dp),
                             textAlign = TextAlign.Center
                         )
                     }
@@ -93,13 +93,13 @@ fun PlasticList(modifier: Modifier = Modifier, navController: NavHostController)
 @Composable
 fun PlasticItem(iconRes: Int, title: String, description: String, onClick: () -> Unit) {
     val borderColor = when (iconRes) {
-        R.drawable.pete1 -> Color(0xFF388E3C) // Warna untuk Plastik PETE
-        R.drawable.hdpe2 -> Color(0xFFFFA000) // Warna untuk Plastik HDPE
-        R.drawable.pvc3 -> Color(0xFF2C2C2C) // Warna untuk Plastik PVC
-        R.drawable.ldpe4 -> Color(0xFF7B1FA2) // Warna untuk Plastik LDPE
-        R.drawable.pp5 -> Color(0xFFB11C1C) // Warna untuk Plastik PP
-        R.drawable.ps6 -> Color(0xFF1976D2) // Warna untuk Plastik PS
-        R.drawable.other7 -> Color(0xFF4DD353) // Warna untuk Plastik Other
+        R.drawable.pete1 -> Color(0xFF388E3C)
+        R.drawable.hdpe2 -> Color(0xFFFFA000)
+        R.drawable.pvc3 -> Color(0xFF2C2C2C)
+        R.drawable.ldpe4 -> Color(0xFF7B1FA2)
+        R.drawable.pp5 -> Color(0xFFB11C1C)
+        R.drawable.ps6 -> Color(0xFF1976D2)
+        R.drawable.other7 -> Color(0xFF4DD353)
         else -> Color.Transparent
     }
 

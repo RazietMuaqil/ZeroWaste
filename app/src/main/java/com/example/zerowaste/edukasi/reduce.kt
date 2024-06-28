@@ -1,4 +1,4 @@
-package com.example.zerowasteproject.edukasi
+package com.example.zerowaste.edukasi
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import com.example.app.R
-import com.example.zerowasteproject.poin.Item
+import com.example.zerowaste.R
+import com.example.zerowaste.poin.Item
 
 @Composable
 fun reduce(navController: NavController) {

@@ -1,8 +1,5 @@
-package com.example.zerowasteproject.screen
+package com.example.zerowaste.screen
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,8 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,8 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+
+
 
 data class Notification(
     val title: String,
@@ -129,7 +129,7 @@ fun NotificationCard(notification: Notification, onClick: () -> Unit) {
             Text(
                 text = notification.date,
                 fontSize = 13.sp,
-                color = Color(0xFF9E9E9E),
+                color = Color(0xFF000000),
                 modifier = Modifier.align(Alignment.End)
             )
         }
@@ -141,15 +141,36 @@ fun NotificationDialog(notification: Notification, onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(text = notification.title)
+            Text(
+                text = notification.title,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
         },
         text = {
-            Text(text = notification.message)
+            Text(
+                text = notification.message,
+                fontSize = 16.sp,
+                color = Color.Black
+            )
         },
         confirmButton = {
-            Button(onClick = onDismiss) {
-                Text("OK")
+            Button(
+                onClick = onDismiss,
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF388E3C)),
+                shape = RoundedCornerShape(4.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 4.dp)
+                    .height(36.dp)
+            ) {
+                Text("OK", color = Color.White, fontSize = 16.sp)
             }
-        }
+        },
+        modifier = Modifier
+            .background(Color(0xFF388E3C), RoundedCornerShape(7.dp))
+            .padding(2.dp),
+        shape = RoundedCornerShape(7.dp),
+        containerColor = Color(0xE6FFFFFF)
     )
 }
