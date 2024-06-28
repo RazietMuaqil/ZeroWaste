@@ -1,7 +1,5 @@
 package com.example.zerowaste.pindai
 
-
-
 import android.Manifest
 import android.app.Activity
 import android.content.Context
@@ -58,6 +56,7 @@ fun pindai(navController: NavController) {
                     val scaledImage = Bitmap.createScaledBitmap(thumbnail, imageSize, imageSize, false)
                     imageBitmap = it
                     resultText = classifyImage(scaledImage, context)
+                    navController.navigate("hasil")
                 } catch (e: Exception) {
                     Log.e("MainActivity", "Error processing camera image", e)
                     resultText = "Error"
@@ -82,6 +81,7 @@ fun pindai(navController: NavController) {
                     val scaledImage = Bitmap.createScaledBitmap(image, imageSize, imageSize, false)
                     imageBitmap = image
                     resultText = classifyImage(scaledImage, context)
+                    navController.navigate("hasil")
                 } catch (e: Exception) {
                     Log.e("MainActivity", "Error processing gallery image", e)
                     resultText = "Error"
@@ -107,8 +107,6 @@ fun pindai(navController: NavController) {
             imageBitmap?.let {
                 Image(bitmap = it.asImageBitmap(), contentDescription = null, modifier = Modifier.size(220.dp))
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Klasifikasi Sampah: $resultText", style = TextStyle(fontSize = 20.sp))
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

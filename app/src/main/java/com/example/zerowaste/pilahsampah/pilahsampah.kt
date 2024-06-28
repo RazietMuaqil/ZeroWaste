@@ -34,13 +34,13 @@ fun pilahsampah(navController: NavHostController) {
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Spacer(modifier = Modifier.width(48.dp))  // Spacer untuk mengkompensasi lebar ikon navigasi
+                            Spacer(modifier = Modifier.width(48.dp))
                             Text(
                                 text = "Pilah Sampah",
                                 fontSize = 20.sp,
                                 modifier = Modifier.weight(1f)
                             )
-                            Spacer(modifier = Modifier.width(48.dp))  // Spacer untuk menyeimbangkan tampilan
+                            Spacer(modifier = Modifier.width(48.dp))
                         }
                     }
                 },
@@ -91,7 +91,7 @@ fun WasteSortingGrid(modifier: Modifier = Modifier, navController: NavHostContro
                             onClick = {
                                 when (label) {
                                     "Plastik" -> navController.navigate(Screens.Plastik.name)
-                                    "Kertas" -> navController.navigate(Screens.Kertas.name) // Tambahkan navigasi untuk Kertas
+                                    "Kertas" -> navController.navigate(Screens.Kertas.name)
                                     // Handle other item clicks if needed
                                 }
                             }
@@ -112,7 +112,7 @@ fun WasteCategoryItem(iconRes: Int, label: String, onClick: () -> Unit) {
             .padding(8.dp)
             .size(150.dp)
             .clickable(onClick = onClick)
-            .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))  // Menambahkan border dengan ketebalan 1dp dan warna abu-abu
+            .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
     ) {
         Column(
             modifier = Modifier

@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,12 +26,12 @@ import com.example.zerowaste.R
 import java.util.*
 
 @Composable
-fun pickup(navController: NavController? = null) {
+fun pickup(navController: NavController) {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .verticalScroll(scrollState)
     ) {
         Text(
@@ -41,12 +43,12 @@ fun pickup(navController: NavController? = null) {
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .border(1.dp, Color.Gray, RoundedCornerShape(10.dp))
-                .padding(16.dp)
+                .padding(15.dp)
         ) {
             var phoneNumber by remember { mutableStateOf("") }
             var address by remember { mutableStateOf("") }
@@ -64,31 +66,35 @@ fun pickup(navController: NavController? = null) {
                 value = nama,
                 onValueChange = { nama = it },
                 label = "Nama Pengguna",
-                borderColor = Color(0xFF388E3C)
+                borderColor = Color(0xFF388E3C),
             )
-            PickupInfoInputField(
-                value = kategori,
+            PickupInfoDropdownField(
+                selectedValue = kategori,
                 onValueChange = { kategori = it },
                 label = "Kategori Sampah",
+                items = listOf("Sampah Organik", "Sampah Anorganik", "Campuran"),
                 borderColor = Color(0xFF388E3C)
             )
             Row(modifier = Modifier.fillMaxWidth()) {
                 PickupInfoInputField(
                     value = berat,
                     onValueChange = { berat = it },
-                    label = "Berat (kg)",
+                    label = "Berat",
                     modifier = Modifier.weight(1f),
-                    borderColor = Color(0xFF388E3C)
+                    borderColor = Color(0xFF388E3C),
+                    unit = "(Kg)"
                 )
                 Spacer(modifier = Modifier.width(10.dp))
                 PickupInfoInputField(
                     value = harga,
                     onValueChange = { harga = it },
-                    label = "Harga (per kg)",
+                    label = "Harga",
                     modifier = Modifier.weight(1f),
-                    borderColor = Color(0xFF388E3C)
+                    borderColor = Color(0xFF388E3C),
+                    unit = "(Per Kg)"
                 )
             }
+
             PickupInfoInputField(
                 value = phoneNumber,
                 onValueChange = { phoneNumber = it },
@@ -99,7 +105,9 @@ fun pickup(navController: NavController? = null) {
                 value = address,
                 onValueChange = { address = it },
                 label = "Alamat",
-                borderColor = Color(0xFF388E3C)
+                borderColor = Color(0xFF388E3C),
+                hasEditButton = true,
+                navController = navController
             )
             PickupInfoInputField(
                 value = pickupDate,
@@ -134,7 +142,7 @@ fun pickup(navController: NavController? = null) {
             Spacer(modifier = Modifier.height(10.dp))
             Button(
                 onClick = {
-                    // navController?.navigate("")
+                    navController.navigate("berhasil")
                     Log.i("Pickup", "Nama: $nama, Kategori: $kategori, Berat: $berat, Harga: $harga, Telepon: $phoneNumber, Alamat: $address, Tanggal: $pickupDate, Waktu: $pickupTime")
                 },
                 modifier = Modifier
@@ -147,7 +155,7 @@ fun pickup(navController: NavController? = null) {
                     text = "Jemput Sampah",
                     color = Color.White,
                     fontSize = 15.sp,
-                    modifier = Modifier.padding(vertical = 8.dp)
+                    modifier = Modifier.padding(vertical = 8.dp),
                 )
             }
         }
@@ -163,7 +171,10 @@ fun PickupInfoInputField(
     hasIcon: Boolean = false,
     icon: Int = 0,
     onClick: (() -> Unit)? = null,
-    borderColor: Color = Color(0xFF388E3C)
+    borderColor: Color = Color(0xFF388E3C),
+    hasEditButton: Boolean = false,
+    navController: NavController? = null,
+    unit: String = ""
 ) {
     OutlinedTextField(
         value = value,
@@ -175,22 +186,89 @@ fun PickupInfoInputField(
             .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier),
         singleLine = true,
         trailingIcon = {
-            if (hasIcon) {
-                Icon(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    tint = Color.Black,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable { onClick?.invoke() }
-                )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (unit.isNotEmpty()) {
+                    Text(unit, color = Color.Gray, fontSize = 16.sp, modifier = Modifier.padding(end = 8.dp)) // Increased font size
+                }
+                if (hasIcon) {
+                    Icon(
+                        painter = painterResource(id = icon),
+                        contentDescription = null,
+                        tint = Color.Black,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .clickable { onClick?.invoke() }
+                    )
+                }
+                if (hasEditButton) {
+                    Button(
+                        onClick = {
+                            navController?.navigate("alamat")
+                        },
+                        colors = ButtonDefaults.buttonColors(Color(0xFF388E3C)),
+                        contentPadding = PaddingValues(0.dp),
+                        shape = RoundedCornerShape(4.dp),
+                        modifier = Modifier.padding(end = 7.dp)
+                    ) {
+                        Text("Edit", color = Color.White)
+                    }
+                }
             }
         },
-        colors = OutlinedTextFieldDefaults.colors(
+        colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = borderColor,
             unfocusedBorderColor = borderColor
         )
     )
+}
+
+@Composable
+fun PickupInfoDropdownField(
+    selectedValue: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    items: List<String>,
+    borderColor: Color = Color(0xFF388E3C)
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column {
+        OutlinedTextField(
+            value = selectedValue,
+            onValueChange = {},
+            label = { Text(label) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { expanded = true },
+            readOnly = true,
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.ArrowDropDown,
+                    contentDescription = null,
+                    modifier = Modifier.clickable { expanded = true }
+                )
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = borderColor,
+                unfocusedBorderColor = borderColor
+            )
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            items.forEach { item ->
+                DropdownMenuItem(
+                    onClick = {
+                        onValueChange(item)
+                        expanded = false
+                    }
+                ) {
+                    Text(text = item)
+                }
+            }
+        }
+    }
 }
 
 @Composable

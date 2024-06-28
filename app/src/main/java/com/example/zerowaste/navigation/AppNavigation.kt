@@ -25,27 +25,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.zerowaste.edukasi.barangbekas
-import com.example.zerowaste.edukasi.daurulang
-import com.example.zerowaste.edukasi.edukasi
-import com.example.zerowaste.edukasi.edukasisampah
-import com.example.zerowaste.edukasi.recycle
-import com.example.zerowaste.edukasi.reduce
-import com.example.zerowaste.edukasi.reuce
+import com.example.zerowaste.edukasi.*
 import com.example.zerowaste.login.login
-import com.example.zerowaste.pilahsampah.kertas
-import com.example.zerowaste.pilahsampah.pilahsampah
-import com.example.zerowaste.pilahsampah.plastik
-import com.example.zerowaste.pilahsampah.plastikPETE
+import com.example.zerowaste.pilahsampah.*
+import com.example.zerowaste.pindai.hasil
 import com.example.zerowaste.pindai.pindai
 import com.example.zerowaste.poin.poin
-import com.example.zerowaste.screen.home
-import com.example.zerowaste.screen.notification
-import com.example.zerowaste.screen.pickup
-import com.example.zerowaste.screen.profile
-import com.example.zerowaste.screen.splash
+import com.example.zerowaste.screen.*
 import com.example.zerowaste.signup.signup
-
 
 @Composable
 fun AppNavigation() {
@@ -53,24 +40,31 @@ fun AppNavigation() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     val selectedItem = remember { mutableStateOf(0) }
+
     Scaffold(
         bottomBar = {
             if (
-                currentDestination?.route != Screens.Login.name &&
-                currentDestination?.route != Screens.Signup.name &&
-                currentDestination?.route != Screens.Pilahsampah.name &&
-                currentDestination?.route != Screens.Plastik.name &&
-                currentDestination?.route != Screens.Kertas.name &&
-                currentDestination?.route != Screens.PlastikPETE.name &&
-                currentDestination?.route != Screens.Poin.name &&
-                currentDestination?.route != Screens.Edukasi.name &&
-                currentDestination?.route != Screens.Reduce.name &&
-                currentDestination?.route != Screens.Reuce.name &&
-                currentDestination?.route != Screens.Recycle.name &&
-                currentDestination?.route != Screens.Edukasisampah.name &&
-                currentDestination?.route != Screens.Barangbekas.name &&
-                currentDestination?.route != Screens.Daurulang.name &&
-                currentDestination?.route != Screens.Splash.name
+                currentDestination?.route !in listOf(
+                    Screens.Login.name,
+                    Screens.Signup.name,
+                    Screens.Pilahsampah.name,
+                    Screens.Plastik.name,
+                    Screens.Kertas.name,
+                    Screens.PlastikPETE.name,
+                    Screens.Poin.name,
+                    Screens.Edukasi.name,
+                    Screens.Reduce.name,
+                    Screens.Reuce.name,
+                    Screens.Recycle.name,
+                    Screens.Edukasisampah.name,
+                    Screens.Barangbekas.name,
+                    Screens.Daurulang.name,
+                    Screens.Splash.name,
+                    Screens.Berhasil.name,
+                    Screens.Alamat.name,
+                    Screens.Simpan.name,
+                    Screens.Hasil.name
+                )
             )
                 BottomNavigation(
                     backgroundColor = Color.White,
@@ -118,8 +112,7 @@ fun AppNavigation() {
         NavHost(
             navController = navController,
             startDestination = Screens.Splash.name,
-            modifier = Modifier
-                .padding(paddingValues)
+            modifier = Modifier.padding(paddingValues)
         ) {
             composable(route = Screens.Home.name) {
                 home(navController = navController)
@@ -180,6 +173,18 @@ fun AppNavigation() {
             }
             composable(route = Screens.Pindai.name) {
                 pindai(navController = navController)
+            }
+            composable(route = Screens.Berhasil.name) {
+                berhasil(navController = navController)
+            }
+            composable(route = Screens.Alamat.name) {
+                alamat(navController = navController)
+            }
+            composable(route = Screens.Simpan.name) {
+                simpan(navController = navController)
+            }
+            composable(route = Screens.Hasil.name) {
+                hasil(navController = navController)
             }
         }
     }

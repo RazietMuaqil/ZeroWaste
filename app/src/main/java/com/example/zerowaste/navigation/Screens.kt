@@ -20,5 +20,9 @@ enum class Screens {
     Barangbekas,
     Daurulang,
     Splash,
-    Pindai
+    Pindai,
+    Berhasil,
+    Alamat,
+    Simpan,
+    Hasil
 }

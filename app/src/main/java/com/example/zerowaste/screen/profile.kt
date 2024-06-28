@@ -1,16 +1,20 @@
 package com.example.zerowaste.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,7 +44,7 @@ fun profile(navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.info),
-            text = "Panduan Aplikasi",
+            text = "Panduan Aplikasi"
         )
         Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
@@ -60,7 +64,8 @@ fun profile(navController: NavController) {
         Spacer(modifier = Modifier.height(1.dp))
         NavigationItem(
             icon = painterResource(id = R.drawable.keluar),
-            text = "Keluar"
+            text = "Keluar",
+            onClick = { navController.navigate("login") }
         )
     }
 }
@@ -77,23 +82,19 @@ fun UserProfile() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Box(
+            Image(
+                painter = painterResource(id = R.drawable.account),
+                contentDescription = null,
                 modifier = Modifier
-                    .padding(start = 16.dp)
-                    .size(70.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.account),
-                    contentDescription = null,
-                    tint = Color(0xFFF5F5F5),
-                    modifier = Modifier.size(120.dp)
-                )
-
-            }
+                    .padding(start = 24.dp)
+                    .size(70.dp)
+                    .clip(CircleShape)
+                    .border(2.dp, Color.White, CircleShape),
+                contentScale = ContentScale.Crop
+            )
             Spacer(modifier = Modifier.width(16.dp))
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment =  Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.weight(1f)
             ) {
@@ -101,13 +102,13 @@ fun UserProfile() {
                     text = "John David",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
-                    onClick = { /* TODO: Edit profile action */ },
+                    onClick = { /* Navigate to edit profile screen */ },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(10.dp)
                 ) {
                     Text(text = "Edit Profil", color = Color(0xFF388E3C))
                 }
@@ -116,17 +117,15 @@ fun UserProfile() {
     }
 }
 
-
-
 @Composable
-fun NavigationItem(icon: Painter, text: String) {
+fun NavigationItem(icon: Painter, text: String, onClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 10.dp)
             .background(Color.White, shape = RoundedCornerShape(8.dp))
             .border(1.dp, Color(0xFF388E3C), RoundedCornerShape(8.dp))
-            .clickable { /* TODO: Navigation action */ }
+            .clickable(onClick = onClick)
             .padding(20.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -136,7 +135,7 @@ fun NavigationItem(icon: Painter, text: String) {
                 tint = Color(0xD8222222),
                 modifier = Modifier.size(24.dp)
             )
-            Spacer(modifier = Modifier.width(3.dp))
+            Spacer(modifier = Modifier.width(10.dp))
             Text(
                 text = text,
                 fontSize = 16.sp,
